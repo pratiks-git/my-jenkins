@@ -3,7 +3,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN python3 -m venv /app/.venv \
     && /app/.venv/bin/pip install --upgrade pip \
-    && /app/.venv/bin/pip install -r requirements.txt
+    && /app/.venv/bin/pip install --no-cache-dir -r requirements.txt
 COPY . .
 ENV PATH="/app/.venv/bin:$PATH"
 RUN flask --app flaskr init-db
